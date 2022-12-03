@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineSystem.Service.Interfaces
 {
-    internal class IProductService
+    public interface IProductService
     {
     }
 }
