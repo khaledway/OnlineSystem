@@ -6,11 +6,11 @@ using OnlineSystem.Infrastructure.DataBase.Models;
 
 namespace OnlineSystem.Infrastructure.DataBase
 {
-    public partial class OnlineShopContext : DbContext
+    public partial class OnlineShopContext : DbContext, IOnlineShopContext 
     {
-        public OnlineShopContext()
-        {
-        }
+
+        
+       
 
         public OnlineShopContext(DbContextOptions<OnlineShopContext> options)
             : base(options)
