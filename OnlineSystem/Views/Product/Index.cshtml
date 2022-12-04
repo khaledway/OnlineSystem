@@ -78,20 +78,11 @@
     <script src="~/lib/datatables/js/jquery.datatables.min.js"></script>
    
     <script>
-
-        var actionGetProductStatus = '@Url.Action("GetProductStatus", "Product")';
-        var actionGetCategory = '@Url.Action("GetCategoryList", "Product")';
         var actionGetProductList = '@Url.Action("GetProductList", "Product")';
 
         $(document).ready(function () 
         {
                     var table = $('#tblProduct').DataTable({
-
-                        ////////////////////
-                        //'columnDefs': [{
-                        //    'targets': [7],
-                        //    'orderable': false,
-                        //}],
 
                         ////////////////////
                         "serverSide": true,

@@ -22,24 +22,6 @@
     <input type="hidden" id="hiProductID" name="hiProductID" value="0">
 
 
-
-        <div class="form-group">
-        <label for="txtDescription" class="control-label col-md-2">Description</label>
-        <div class="col-md-10">
-            <input type="text"
-                   class="form-control"
-                   id="txtDescription"
-                   name="txtDescription" />
-        </div>
-        </div>
-
-
-    <div class="form-group">
-        <label for="exampleFormControlFile1">Image</label>
-        <input type="file" class="form-control-file" name="ProductIcon" id="ProductIcon" onchange="handleFileInput(event)">
-  
-        <img id="imgPreview" class="img-fluid img-thumbnail my-2 shadow" src="#" alt="image-preview" />
-    </div>
     <div class="form-group">
         <label for="txtName" class="control-label col-md-2">Name</label>
         <div class="col-md-10">
@@ -60,6 +42,25 @@
                    name="txtName_ar" />
         </div>
     </div>
+
+        <div class="form-group">
+        <label for="txtDescription" class="control-label col-md-2">Description</label>
+        <div class="col-md-10">
+            <input type="text"
+                   class="form-control"
+                   id="txtDescription"
+                   name="txtDescription" />
+        </div>
+        </div>
+
+
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Image</label>
+        <input type="file" class="form-control-file" name="ProductIcon" id="ProductIcon" onchange="handleFileInput(event)">
+  
+        <img id="imgPreview" class="img-fluid img-thumbnail my-2 shadow" src="#" alt="image-preview" />
+    </div>
+   
 
 
 
@@ -207,6 +208,8 @@
                     {
                         $("#divShowMessage").html(data.Message);
                         $("#alertForSaveAll").show();
+                        window.history.back();
+
                
                     }
                     else 
