@@ -179,10 +179,31 @@ namespace OnlineSystem.Service.Services
                             : _ProductIQueryable.OrderBy(p => p.Name);
                         break;
 
-                 
+
+                    case "1":
+                        _ProductIQueryable = orderDir.Equals("DESC", StringComparison.CurrentCultureIgnoreCase) ? _ProductIQueryable.OrderByDescending(p => p.Name_ar)
+                       : _ProductIQueryable.OrderBy(p => p.Name_ar);
+                        break;
+
+                    case "2":
+                        _ProductIQueryable = orderDir.Equals("DESC", StringComparison.CurrentCultureIgnoreCase) ? _ProductIQueryable.OrderByDescending(p => p.Description)
+                       : _ProductIQueryable.OrderBy(p => p.Description);
+                        break;
+
+                    case "3":
+                        _ProductIQueryable = orderDir.Equals("DESC", StringComparison.CurrentCultureIgnoreCase) ? _ProductIQueryable.OrderByDescending(p => p.Price)
+                       : _ProductIQueryable.OrderBy(p => p.Price);
+                        break;
+
+                    case "4":
+                        _ProductIQueryable = orderDir.Equals("DESC", StringComparison.CurrentCultureIgnoreCase) ? _ProductIQueryable.OrderByDescending(p => p.HasAvailableStock)
+                       : _ProductIQueryable.OrderBy(p => p.HasAvailableStock);
+                        break;
 
 
-                     default:
+
+
+                    default:
                         _ProductIQueryable = _ProductIQueryable.OrderByDescending(p => p.Name);
                         break;
 

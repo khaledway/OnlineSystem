@@ -84,6 +84,11 @@
         {
                     var table = $('#tblProduct').DataTable({
 
+
+                'columnDefs': [{
+                    'targets': [5,6],
+                    'orderable': false,
+                }],
                         ////////////////////
                         "serverSide": true,
                         "processing": true,
