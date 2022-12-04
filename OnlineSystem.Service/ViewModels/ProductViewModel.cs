@@ -13,6 +13,7 @@ namespace OnlineSystem.Service.ViewModels
         public int ID { get; set; }
         public string? Description { get; set; }
         public string? Name { get; set; }
+        public string? Name_ar { get; set; }
         public double? Price { get; set; }
         public bool? HasAvailableStock { get; set; }
         public int? CategoryID { get; set; }
@@ -22,14 +23,19 @@ namespace OnlineSystem.Service.ViewModels
     }
     public class ProductCreateViewModel
     {
-        public int ID { get; set; }
-
+        
 
         [Required]
         public string? Description { get; set; }
        
         [Required]
         public string? Name { get; set; }
+
+
+        [Required]
+        public string? Name_ar { get; set; }
+
+
         public double? Price { get; set; }
         public bool? HasAvailableStock { get; set; }
         public int? CategoryID { get; set; }

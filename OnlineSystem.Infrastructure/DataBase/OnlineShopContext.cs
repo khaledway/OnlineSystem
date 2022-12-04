@@ -50,6 +50,8 @@ namespace OnlineSystem.Infrastructure.DataBase
 
                 entity.Property(e => e.Name).HasMaxLength(100);
 
+                entity.Property(e => e.Name_ar).HasMaxLength(100);
+
                 entity.Property(e => e.ProductImageName).HasMaxLength(1000);
 
                 entity.Property(e => e.ProductImagePath).HasMaxLength(1000);

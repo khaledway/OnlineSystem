@@ -13,6 +13,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Name Arabic</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Has Available Stock</th>
@@ -29,10 +30,13 @@
                     <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Name" data-column="0">
                 </td>
                 <td>
-                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Description" data-column="1">
+                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Name" data-column="1">
                 </td>
                 <td>
-                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Price" data-column="2">
+                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Description" data-column="2">
+                </td>
+                <td>
+                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Price" data-column="3">
                 </td>
 
 
@@ -41,10 +45,10 @@
           
                 </td>
                 <td>
-                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Category Name" data-column="4">
+                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Category Name" data-column="5">
                 </td>
                 <td>
-                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Parent Category Name" data-column="5">
+                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Parent Category Name" data-column="6">
                 </td>
 
                
@@ -54,6 +58,7 @@
         <tfoot>
             <tr>
                 <th>Name</th>
+                   <th>Name Arabic</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Has Available Stock</th>
@@ -112,6 +117,7 @@
                         "aoColumns":
                             [
                                 { "mDataProp": "name" },
+                                { "mDataProp": "name_ar" },
                                 { "mDataProp": "description" },
                                 { "mDataProp": "price" },
                                 { "mDataProp": "hasAvailableStock" },

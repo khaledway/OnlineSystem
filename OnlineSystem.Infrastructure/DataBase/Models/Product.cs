@@ -13,6 +13,7 @@ namespace OnlineSystem.Infrastructure.DataBase.Models
         public bool? HasAvailableStock { get; set; }
         public int? CategoryID { get; set; }
         public string? ProductImagePath { get; set; }
+        public string? Name_ar { get; set; }
 
         public virtual Category? Category { get; set; }
     }

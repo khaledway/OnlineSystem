@@ -99,16 +99,18 @@ namespace OnlineSystem.Service.Services
 
 
             string Name = dataTableAjaxPostModel.columns[0].search.value;
-            string Description = dataTableAjaxPostModel.columns[1].search.value;
-            string Price = dataTableAjaxPostModel.columns[2].search.value;
+            string Name_ar = dataTableAjaxPostModel.columns[1].search.value;
+            string Description = dataTableAjaxPostModel.columns[2].search.value;
+            string Price = dataTableAjaxPostModel.columns[3].search.value;
 
 
-            string CategoryName = dataTableAjaxPostModel.columns[4].search.value;
-            string ParentCategoryName = dataTableAjaxPostModel.columns[5].search.value;
+            string CategoryName = dataTableAjaxPostModel.columns[5].search.value;
+            string ParentCategoryName = dataTableAjaxPostModel.columns[6].search.value;
 
 
 
             bool NameFound = !string.IsNullOrEmpty(Name);
+            bool Name_ar_Found = !string.IsNullOrEmpty(Name_ar);
             bool DescriptionFound = !string.IsNullOrEmpty(Description);
             bool PriceFound = !string.IsNullOrEmpty(Price);
 
@@ -125,6 +127,10 @@ namespace OnlineSystem.Service.Services
             if (NameFound)
             {
                 _ProductIQueryable = _ProductIQueryable.Where(x => x.Name != null && x.Name.ToLower().Trim().Contains(Name.ToLower().Trim()));
+            }
+            if (Name_ar_Found)
+            {
+                _ProductIQueryable = _ProductIQueryable.Where(x => x.Name_ar != null && x.Name_ar.ToLower().Trim().Contains(Name_ar.ToLower().Trim()));
             }
             if (PriceFound)
             {
@@ -173,10 +179,6 @@ namespace OnlineSystem.Service.Services
                             : _ProductIQueryable.OrderBy(p => p.Name);
                         break;
 
-                     case "1":
-                        _ProductIQueryable = orderDir.Equals("DESC", StringComparison.CurrentCultureIgnoreCase) ? _ProductIQueryable.OrderByDescending(p => p.Description)
-                           : _ProductIQueryable.OrderBy(p => p.Description);
-                        break;
                  
 
 
@@ -219,6 +221,7 @@ namespace OnlineSystem.Service.Services
              Description= productCreateViewModel.Description,
              HasAvailableStock=productCreateViewModel.HasAvailableStock,
              Name=productCreateViewModel.Name,
+             Name_ar=productCreateViewModel.Name_ar,
              Price = productCreateViewModel.Price,
              ProductImageName=productCreateViewModel.ProductImageName,
              ProductImagePath= productCreateViewModel.ProductImagePath,
