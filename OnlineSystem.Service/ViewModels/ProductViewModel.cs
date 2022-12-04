@@ -35,11 +35,13 @@ namespace OnlineSystem.Service.ViewModels
         [Required]
         public string? Name_ar { get; set; }
 
-
+        [Required]
         public double? Price { get; set; }
-        public bool? HasAvailableStock { get; set; }
-        public int? CategoryID { get; set; }
 
+        public bool? HasAvailableStock { get; set; }
+        [Required]
+        public int? CategoryID { get; set; }
+        [Required]
 
         public IFormFile? ImageFile { get; set; }
 
