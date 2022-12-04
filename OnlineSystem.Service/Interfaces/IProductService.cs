@@ -22,5 +22,9 @@ namespace OnlineSystem.Service.Interfaces
         public List<ProductStatus> GetProductStatusList();
 
 
+
+
+        public List<ProductViewModel> GetAllProductList();
+
     }
 }

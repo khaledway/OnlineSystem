@@ -222,7 +222,7 @@ namespace OnlineSystem.Service.Services
             return productViewModels;
         }
 
-     public   List<CategoryViewModel> GetCategoryList(bool IsParentCategory)
+         public   List<CategoryViewModel> GetCategoryList(bool IsParentCategory)
         {
             List<CategoryViewModel> CategoryViewModelList = new List<CategoryViewModel>();
             var CategoryDBList = _IOnlineShopContext.Category.Where(s=>(IsParentCategory==true? s.ParentCategoryID==null:s.ParentCategoryID.HasValue&& s.ParentCategoryID.Value>1)).ToList();
@@ -287,6 +287,17 @@ namespace OnlineSystem.Service.Services
         }
 
 
+
+        public List<ProductViewModel> GetAllProductList()
+        {
+            List<ProductViewModel> ProductViewModelList = new List<ProductViewModel>();
+            var ProductDBList = _IOnlineShopContext.Product.ToList();
+
+            ProductViewModelList = _IMapper.Map<List<Product>, List<ProductViewModel>>(ProductDBList);
+            return ProductViewModelList;
+        }
+
+        
 
     }
 }

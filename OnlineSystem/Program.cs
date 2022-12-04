@@ -23,7 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
     // Add services to the container.
     builder.Services.AddControllersWithViews();
 
-
+    builder.Services.AddControllers();
     #region My Service
 
     builder.Services.AddDbContext<OnlineShopContext>(options =>
