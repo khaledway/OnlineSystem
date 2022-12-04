@@ -213,7 +213,7 @@ namespace OnlineSystem.Controllers
                 {
                     draw = Convert.ToInt32(draw),
                     recordsTotal = TotalRecordsCount,
-                    recordsFiltered = FilteredRecordCount,
+                    recordsFiltered = TotalRecordsCount,
                     data = ProductViewModelList
                 });
 
