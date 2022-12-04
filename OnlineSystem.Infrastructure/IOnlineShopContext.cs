@@ -14,5 +14,7 @@ namespace OnlineSystem.Infrastructure
           DbSet<Category> Category { get; set; }
           DbSet<Product> Product { get; set; }
 
+
+        int SaveChanges();
     }
 }

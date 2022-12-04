@@ -6,11 +6,11 @@ using OnlineSystem.Infrastructure.DataBase.Models;
 
 namespace OnlineSystem.Infrastructure.DataBase
 {
-    public partial class OnlineShopContext : DbContext, IOnlineShopContext 
+    public partial class OnlineShopContext : DbContext , IOnlineShopContext
     {
-
-        
-       
+        public OnlineShopContext()
+        {
+        }
 
         public OnlineShopContext(DbContextOptions<OnlineShopContext> options)
             : base(options)
@@ -48,9 +48,11 @@ namespace OnlineSystem.Infrastructure.DataBase
             {
                 entity.Property(e => e.Description).HasMaxLength(500);
 
-                entity.Property(e => e.Image).HasMaxLength(1000);
-
                 entity.Property(e => e.Name).HasMaxLength(100);
+
+                entity.Property(e => e.ProductImageName).HasMaxLength(1000);
+
+                entity.Property(e => e.ProductImagePath).HasMaxLength(1000);
 
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Product)

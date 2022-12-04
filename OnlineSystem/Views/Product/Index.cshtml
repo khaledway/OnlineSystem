@@ -1,5 +1,149 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+<div >
+    <table id="tblProduct" class="display">
+
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Has Available Stock</th>
+                <th>Category Name</th>
+                <th>Parent Category Name</th>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+
+
+
+                <td>
+                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Name" data-column="0">
+                </td>
+                <td>
+                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Description" data-column="1">
+                </td>
+                <td>
+                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Price" data-column="2">
+                </td>
+
+
+
+                <td>
+          
+                </td>
+                <td>
+                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Category Name" data-column="4">
+                </td>
+                <td>
+                    <input type="text" class="form-control filter-input txtFilter" placeholder="Search For Parent Category Name" data-column="5">
+                </td>
+
+               
+            </tr>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Has Available Stock</th>
+                <th>Category Name</th>
+                <th>Parent Category Name</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+@section scripts{
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <script src="~/lib/datatables/js/jquery.datatables.js"></script>
+    <script src="~/lib/datatables/js/jquery.datatables.min.js"></script>
+   
+    <script>
+
+        var actionGetProductStatus = '@Url.Action("GetProductStatus", "Product")';
+        var actionGetCategory = '@Url.Action("GetCategoryList", "Product")';
+        var actionGetProductList = '@Url.Action("GetProductList", "Product")';
+
+        $(document).ready(function () 
+        {
+                    var table = $('#tblProduct').DataTable({
+
+                        ////////////////////
+                        //'columnDefs': [{
+                        //    'targets': [7],
+                        //    'orderable': false,
+                        //}],
+
+                        ////////////////////
+                        "serverSide": true,
+                        "processing": true,
+                        "dom": 'Brt<lp>i',
+                        ////////////////////
+
+                        
+                        "ajax": {
+                            "url": actionGetProductList,
+                            
+
+                            "contentType": "application/json",
+                            "type": "POST",
+                            "datatype": "json",
+                            "data": function (data) 
+                            {
+                                console.log(data);
+                                return JSON.stringify(data);
+                            },
+                           
+                        }, 
+                        "aoColumns":
+                            [
+                                { "mDataProp": "name" },
+                                { "mDataProp": "description" },
+                                { "mDataProp": "price" },
+                                { "mDataProp": "hasAvailableStock" },
+                                { "mDataProp": "categoryName" },
+                                { "mDataProp": "parentCategoryName" },
+                            ],
+                        //////////////////////
+                   
+                    }); 
+
+            $('.filter-input').each(function () {
+                $(this).keyup(function () {
+                    table.column($(this).data('column'))
+                        .search($(this).val())
+                        .draw();
+                })
+            })
+                    
+
+
+
+                
+
+
+            
+
+
+            
+        
+        
+        
+        })
+    </script>
+
 }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +12,45 @@ namespace OnlineSystem.Service.ViewModels
     {
         public int ID { get; set; }
         public string? Description { get; set; }
-        public string? Image { get; set; }
         public string? Name { get; set; }
         public double? Price { get; set; }
         public bool? HasAvailableStock { get; set; }
         public int? CategoryID { get; set; }
         public string CategoryName { get; set; }
+        public string ParentCategoryName { get; set; }
 
     }
-}
+    public class ProductCreateViewModel
+    {
+        public int ID { get; set; }
+
+
+        [Required]
+        public string? Description { get; set; }
+       
+        [Required]
+        public string? Name { get; set; }
+        public double? Price { get; set; }
+        public bool? HasAvailableStock { get; set; }
+        public int? CategoryID { get; set; }
+
+
+        public IFormFile? ImageFile { get; set; }
+
+        public string? ProductImageName { get; set; }
+
+        public string? ProductImagePath { get; set; }
+    }
+
+
+
+    public class ProductStatus
+    {
+
+        public int StatusID { get; set; }
+        public  string StatusName { get; set; }
+    }
+
+
+
+    }
