@@ -42,5 +42,26 @@ namespace OnlineSystem.API
             }
         }
 
+
+
+        [HttpGet]
+        public IActionResult GetProductModelListTestGitHub()
+        {
+            try
+            {
+                List<ProductViewModel> ProductStatusList = new List<ProductViewModel>();
+                ProductStatusList = _IProductService.GetAllProductList();
+                return Json(ProductStatusList, new System.Text.Json.JsonSerializerOptions());
+            }
+            catch (Exception ex)
+            {
+                _ILogger.LogError(ex, "error in GetProductModelList");
+                return Json(new List<ProductViewModel>(), new System.Text.Json.JsonSerializerOptions());
+
+
+            }
+        }
+
+
     }
 }
