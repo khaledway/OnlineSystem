@@ -29,7 +29,7 @@ namespace OnlineSystem.Controllers
             return View();
         }
         public ActionResult Create()
-        { 
+        {
             return View();
         }
 
@@ -44,7 +44,7 @@ namespace OnlineSystem.Controllers
             resultViewModel.Message = "Error";
             resultViewModel.Status = MessageTypeEnum.Error;
 
-          
+
             try
             {
 
@@ -87,9 +87,9 @@ namespace OnlineSystem.Controllers
                 }
                 else
                 {
-                    
+
                 }
-                    return Json(resultViewModel, new System.Text.Json.JsonSerializerOptions());
+                return Json(resultViewModel, new System.Text.Json.JsonSerializerOptions());
 
             }
             catch (Exception ex)
@@ -99,8 +99,8 @@ namespace OnlineSystem.Controllers
                 resultViewModel.Status = MessageTypeEnum.Exception;
                 resultViewModel.ConsoleMessage = ex.GetBaseException().Message;
                 return Json(resultViewModel, new System.Text.Json.JsonSerializerOptions());
-            }   
-        
+            }
+
         }
 
 
@@ -118,7 +118,7 @@ namespace OnlineSystem.Controllers
                 {
                     string webRootPath = _webHostEnvironment.ContentRootPath;
                     string uploadDir = "";
-       
+
                     uploadDir = Path.Combine(GetConfigurationSection("SharedStoragePath").Value + directoryPath);
                     var originalFilename = Path.GetFileName(file.FileName);
                     var fileName = Path.GetFileNameWithoutExtension(file.FileName);
@@ -170,7 +170,7 @@ namespace OnlineSystem.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetCategoryList(bool IsParentCategory=false)
+        public IActionResult GetCategoryList(bool IsParentCategory = false)
         {
             try
             {
@@ -192,7 +192,6 @@ namespace OnlineSystem.Controllers
 
 
         [HttpPost]
-
         public IActionResult GetProductList([FromBody] DataTableParameters dataTableAjaxPostModel)
         {
             try
@@ -205,8 +204,8 @@ namespace OnlineSystem.Controllers
 
                 string draw = dataTableAjaxPostModel.draw.ToString();
 
-                
-                List<ProductViewModel> ProductViewModelList = _IProductService.GetProductList(dataTableAjaxPostModel , out  TotalRecordsCount, out  FilteredRecordCount);
+
+                List<ProductViewModel> ProductViewModelList = _IProductService.GetProductList(dataTableAjaxPostModel, out TotalRecordsCount, out FilteredRecordCount);
 
 
                 return this.Json(new
@@ -220,7 +219,7 @@ namespace OnlineSystem.Controllers
 
             }
 
-            catch ( Exception ex)
+            catch (Exception ex)
             {
 
 
@@ -235,11 +234,59 @@ namespace OnlineSystem.Controllers
                 }, new System.Text.Json.JsonSerializerOptions());
 
             }
-            
+
+        }
+
+
+
+        #endregion
+
+
+        [HttpPost]
+        public IActionResult GetProductListTestat([FromBody] DataTableParameters dataTableAjaxPostModel)
+        {
+            try
+
+            {
+
+                int TotalRecordsCount = 0;
+                int FilteredRecordCount = 0;
+
+
+                string draw = dataTableAjaxPostModel.draw.ToString();
+
+
+                List<ProductViewModel> ProductViewModelList = _IProductService.GetProductList(dataTableAjaxPostModel, out TotalRecordsCount, out FilteredRecordCount);
+
+
+                return this.Json(new
+                {
+                    draw = Convert.ToInt32(draw),
+                    recordsTotal = TotalRecordsCount,
+                    recordsFiltered = TotalRecordsCount,
+                    data = ProductViewModelList
+                });
+
+
             }
 
+            catch (Exception ex)
+            {
 
 
-                #endregion
+                _ILogger.LogError(ex.GetBaseException().Message, ex, false);
+
+                return this.Json(new
+                {
+                    draw = 0,
+                    recordsTotal = 0,
+                    recordsFiltered = 0,
+                    data = new List<ProductViewModel>(),
+                }, new System.Text.Json.JsonSerializerOptions());
+
             }
+
+        }
+
+    }
 }
